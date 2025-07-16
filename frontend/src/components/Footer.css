@@ -1,0 +1,22 @@
+.footer {
+  background-color: #efefef;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer-content p {
+  margin: 0.3rem 0;
+}
+
+.footer-redes a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: 500;
+}
+
+.footer-redes a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,15 @@
+
+.App {
+  background-color: aliceblue;
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+  color: #005b8f;
+}
+
+p {
+  color: #333;
+}
