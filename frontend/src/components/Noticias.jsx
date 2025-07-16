@@ -6,7 +6,7 @@ function Noticias() {
   const [noticias, setNoticias] = useState([]);
 
   useEffect(() => {
-    fetch('https://muni-web-api.onrender.com/noticias')
+    fetch('https://muni-web.onrender.com/noticias')
       .then(response => response.json())
       .then(data => setNoticias(data))
       .catch(error => {
