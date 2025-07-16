@@ -1,7 +1,6 @@
 import Actividades from './components/Actividades';
 import Contacto from './components/Contacto';
 
-...
 
 <Routes>
   <Route path="/" element={<App />} />
