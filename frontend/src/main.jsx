@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css';
+import Actividades from './components/Actividades';
+import Contacto from './components/Contacto';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+...
+
+<Routes>
+  <Route path="/" element={<App />} />
+  <Route path="/noticias" element={<Noticias />} />
+  <Route path="/actividades" element={<Actividades />} />
+  <Route path="/contacto" element={<Contacto />} />
+</Routes>
