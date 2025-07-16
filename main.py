@@ -1,11 +1,32 @@
-from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+# CORS (para que frontend pueda consumir el backend)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # En producción se recomienda limitar esto
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.get("/")
-def read_root():
-    return {"mensaje": "¡Hola desde muni_web API!"}
+# Simulación de noticias
+noticias = [
+    {
+        "id": 1,
+        "titulo": "Centro cultural Muni Sana",
+        "descripcion": "Se inauguró un nuevo espacio para talleres comunitarios.",
+        "fecha": "15 julio 2025",
+        "imagen": ""
+    },
+    {
+        "id": 2,
+        "titulo": "Programa de reciclaje",
+        "descripcion": "Se implementa reciclaje en barrios.",
+        "fecha": "12 julio 2025",
+        "imagen": ""
+    }
+]
 
-@app.get("/saludo")
-def saludo(nombre: str = "visitante"):
-    return {"mensaje": f"Hola, {nombre}. Bienvenido a muni_web!"}
+@app.get("/noticias")
+def obtener_noticias():
+    return noticias
