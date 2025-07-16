@@ -1,16 +1,12 @@
-import './App.css';
+import React from 'react';
 import Noticias from './components/Noticias';
-import Footer from './components/Footer';
+import Layout from './components/Layout';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Muni Web Muni Sana</h1>
-      <p>Plataforma institucional de noticias y servicios para la comunidad</p>
-
+    <Layout>
       <Noticias />
-      <Footer />
-    </div>
+    </Layout>
   );
 }
 
