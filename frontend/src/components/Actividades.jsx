@@ -1,14 +1,32 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import './Noticias.css';
 
-const Actividades = () => {
+function Actividades() {
+  const [actividades, setActividades] = useState([]);
+
+  useEffect(() => {
+    fetch('https://muni-web.onrender.com/actividades')
+      .then(response => response.json())
+      .then(data => setActividades(data));
+  }, []);
+
   return (
-    <div>
-      <h2 className="text-2xl font-semibold text-sky-900 mb-4">Calendario de Actividades</h2>
-      <p className="text-gray-700">
-        Próximamente podrás ver aquí el calendario de eventos, talleres y actividades comunitarias de Muni Sana.
-      </p>
-    </div>
+    <section className="noticias">
+      <h2 className="noticias-titulo" style={{ color: '#d97706' }}>Próximas Actividades</h2>
+      <div className="noticias-lista">
+        {actividades.map((actividad) => (
+          <article key={actividad.id} className="noticia-card">
+            <img src="components/default.png" alt="Actividad" className="noticia-imagen" />
+            <div className="noticia-contenido">
+              <h3 className="noticia-titulo">{actividad.titulo}</h3>
+              <p className="noticia-descripcion">{actividad.descripcion}</p>
+              <p className="noticia-fecha">{actividad.fecha}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
-};
+}
 
 export default Actividades;
