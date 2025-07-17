@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 body {
+  padding-top: 60px; /* para que no tape el menú superior fijo */
+  padding-bottom: 60px; /* para que no tape el menú inferior móvil */
   margin: 0;
   font-family: 'Inter', sans-serif;
   background-color: #f3f6f9;
