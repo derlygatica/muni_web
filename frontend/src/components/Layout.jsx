@@ -1,14 +1,23 @@
 import Navbar from './Navbar';
+import Hero from './Hero';
+import Servicios from './Servicios';
+import Proyectos from './Proyectos';
+import Institucional from './Institucional';
+import Noticias from './Noticias';
+import Contacto from './Contacto';
 import Footer from './Footer';
-import { Outlet } from 'react-router-dom';
+
 
 export default function Layout() {
   return (
     <>
       <Navbar />
-      <main className="p-4">
-        <Outlet />
-      </main>
+      <Hero />
+      <Servicios />
+      <Proyectos />
+      <Institucional />
+      <Noticias />
+      <Contacto />
       <Footer />
     </>
   );

@@ -1,43 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import './Noticias.css';
-import defaultImage from './default.png';
+import defaultImage from '../assets/default.png';
 
-function Noticias() {
-  const [noticias, setNoticias] = useState([]);
-
-  useEffect(() => {
-    fetch('https://muni-web.onrender.com/noticias')
-      .then(response => response.json())
-      .then(data => setNoticias(data))
-      .catch(error => {
-        console.error("Error al obtener noticias:", error);
-        setNoticias([]); // fallback vacío si falla
-      });
-  }, []);
-
+export default function Noticias() {
   return (
-    <section className="noticias">
-      <h2>Últimas Noticias</h2>
-      <div className="tarjetas">
-        {noticias.length === 0 ? (
-          <p>No hay noticias disponibles.</p>
-        ) : (
-          noticias.map((noticia) => (
-            <div key={noticia.id} className="tarjeta">
-              <img
-                src={noticia.imagen || defaultImage}
-                alt={noticia.titulo}
-              />
-              <h3>{noticia.titulo}</h3>
-              <p>{noticia.descripcion}</p>
-              <span className="fecha">{noticia.fecha}</span>
-            </div>
-          ))
-        )}
+    <div className="grid md:grid-cols-2 gap-6">
+      <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <img
+          src={defaultImage}
+          alt="Noticia"
+          className="rounded mb-4 w-full h-40 object-cover"
+        />
+        <h3 className="text-xl font-semibold mb-2 text-blue-700">Centro cultural Muni Sana</h3>
+        <p className="text-gray-600 mb-2">Se inauguró un nuevo espacio para talleres comunitarios.</p>
+        <span className="text-sm text-gray-400">15 julio 2025</span>
       </div>
-    </section>
+    </div>
   );
 }
-console.log("Noticias cargando...");
-
-export default Noticias;

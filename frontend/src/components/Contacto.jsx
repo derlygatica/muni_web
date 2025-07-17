@@ -1,21 +1,32 @@
-import React from 'react';
-
-const Contacto = () => {
+export default function Contacto() {
   return (
-    <div>
-      <h2 className="text-2xl font-semibold text-sky-900 mb-4">Contacto Institucional</h2>
-      <p className="text-gray-700 mb-4">
-        Puedes comunicarte con nosotros a través del siguiente formulario.
-      </p>
-
-      <form className="grid gap-4 max-w-md">
-        <input type="text" placeholder="Nombre completo" className="p-2 border rounded" />
-        <input type="email" placeholder="Correo electrónico" className="p-2 border rounded" />
-        <textarea placeholder="Mensaje" className="p-2 border rounded" rows="4"></textarea>
-        <button type="submit" className="bg-sky-900 text-white py-2 rounded hover:bg-sky-800">Enviar</button>
-      </form>
-    </div>
+    <section id="contacto" className="py-16 bg-gray-100 px-6">
+      <div className="max-w-xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-8 text-blue-800">Contáctanos</h2>
+        <form className="space-y-4 text-left">
+          <input
+            type="text"
+            placeholder="Nombre completo"
+            className="w-full border border-gray-300 px-4 py-2 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="email"
+            placeholder="Correo electrónico"
+            className="w-full border border-gray-300 px-4 py-2 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <textarea
+            placeholder="Mensaje"
+            rows="4"
+            className="w-full border border-gray-300 px-4 py-2 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ></textarea>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+    </section>
   );
-};
-
-export default Contacto;
+}
