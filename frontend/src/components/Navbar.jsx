@@ -25,7 +25,7 @@ export default function Navbar() {
         </ul>
       </nav>
 
-      {/* Menú inferior móvil */}
+      {/* Barra inferior solo en móviles */}
       <nav className="mobile-nav">
         <Link to="/">🏠</Link>
         <Link to="/noticias">📰</Link>
