@@ -38,5 +38,6 @@ function Noticias() {
     </section>
   );
 }
+console.log("Noticias cargando...");
 
 export default Noticias;
