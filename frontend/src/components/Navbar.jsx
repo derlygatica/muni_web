@@ -1,3 +1,4 @@
+import logo from "../assets/default.png"; // Ajusta si estás más profundo
 import React, { useState } from "react";
 
 const Navbar = () => {
@@ -12,65 +13,70 @@ const Navbar = () => {
     { name: "Contacto", id: "contacto" },
   ];
 
-  const handleScroll = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setOpen(false);
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setOpen(false);
+    }
   };
 
   return (
-    <nav className="bg-white px-6 py-4 fixed top-0 w-full shadow-md z-50">
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          {/* Reemplaza por tu logo */}
-          <img src="/src/assets/default.png" alt="Logo" className="w-10 h-10" />
+    <nav className="bg-white fixed top-0 w-full shadow-sm z-50">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        {/* Logo + Título */}
+        <div className="flex items-center space-x-4">
+          <img
+            src={logo}
+            alt="Logo Municipalidad"
+            className="object-contain"
+            style={{ width: "48px", height: "48px" }}
+          />
           <span className="text-2xl font-bold text-blue-800">Muni Sana</span>
         </div>
 
-        {/* Menu desktop */}
-        <ul className="hidden md:flex space-x-8 text-gray-700 font-medium">
-          {links.map((l) => (
-            <li key={l.id}>
-              <button
-                onClick={() => handleScroll(l.id)}
-                className="hover:text-blue-600 transition"
-              >
-                {l.name}
-              </button>
-            </li>
-          ))}
-          <li>
+        {/* Menú Escritorio */}
+        <div className="hidden md:flex items-center space-x-10">
+          {links.map((link) => (
             <button
-              onClick={() => handleScroll("contacto")}
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className="text-gray-700 hover:text-blue-600 transition"
             >
-              Contáctanos
+              {link.name}
             </button>
-          </li>
-        </ul>
+          ))}
+          <button
+            onClick={() => scrollTo("contacto")}
+            className="ml-6 bg-green-500 text-white px-5 py-2 rounded-md font-medium hover:bg-green-600 transition"
+          >
+            Contáctanos
+          </button>
+        </div>
 
-        {/* Hamburguesa móvil */}
+        {/* Botón Móvil */}
         <div className="md:hidden">
-          <button onClick={() => setOpen(!open)} className="text-gray-700">
+          <button onClick={() => setOpen(!open)} className="text-2xl text-gray-700">
             {open ? "✖" : "☰"}
           </button>
         </div>
       </div>
 
-      {/* Menu móvil desplegable */}
+      {/* Menú Móvil */}
       {open && (
-        <div className="md:hidden bg-white shadow-md mt-2 px-6 py-4 space-y-4">
-          {links.map((l) => (
+        <div className="md:hidden bg-white shadow-md px-6 py-4 space-y-4">
+          {links.map((link) => (
             <button
-              key={l.id}
-              onClick={() => handleScroll(l.id)}
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
               className="block w-full text-left text-gray-700 font-medium hover:text-blue-600"
             >
-              {l.name}
+              {link.name}
             </button>
           ))}
           <button
-            onClick={() => handleScroll("contacto")}
-            className="block w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition"
+            onClick={() => scrollTo("contacto")}
+            className="block w-full bg-green-500 text-white py-2 rounded-md font-medium hover:bg-green-600 transition"
           >
             Contáctanos
           </button>

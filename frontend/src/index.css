@@ -4,3 +4,7 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+div .img {
+  width: "80px";
+  height: "80px";
+}
