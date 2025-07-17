@@ -1,36 +1,47 @@
 // src/components/Navbar.jsx
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
-  return (
-    <header>
-      <nav className="navbar">
-        <div className="logo">Muni Sana</div>
-        <input type="checkbox" id="menu-toggle" />
-        <label htmlFor="menu-toggle" className="menu-icon">☰</label>
-        <ul className="menu">
-          <li><Link to="/">Inicio</Link></li>
-          <li><Link to="/noticias">Noticias</Link></li>
-          <li><Link to="/actividades">Actividades</Link></li>
-          <li><Link to="/contacto">Contacto</Link></li>
-          <li className="dropdown">
-            <span>Servicios ▾</span>
-            <ul className="dropdown-menu">
-              <li><Link to="/salud">Salud</Link></li>
-              <li><Link to="/educacion">Educación</Link></li>
-              <li><Link to="/reclamos">Reclamos</Link></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
-      {/* Barra inferior solo en móviles */}
-      <nav className="mobile-nav">
-        <Link to="/">🏠</Link>
-        <Link to="/noticias">📰</Link>
-        <Link to="/actividades">🎉</Link>
-        <Link to="/contacto">📞</Link>
+  return (
+    <header className="navbar-container">
+      <div className="navbar">
+        <h2 className="logo">Muni Sana</h2>
+        <nav className="desktop-menu">
+          <Link to="/">Inicio</Link>
+          <Link to="/noticias">Noticias</Link>
+          <Link to="/actividades">Actividades</Link>
+          <Link to="/contacto">Contacto</Link>
+          <div className="dropdown">
+            <span>Servicios ▾</span>
+            <div className="dropdown-menu">
+              <Link to="/salud">Salud</Link>
+              <Link to="/educacion">Educación</Link>
+              <Link to="/reclamos">Reclamos</Link>
+            </div>
+          </div>
+        </nav>
+
+        <button className="mobile-toggle" onClick={toggleMenu}>☰</button>
+      </div>
+
+      <nav className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+        <Link to="/" onClick={toggleMenu}>Inicio</Link>
+        <Link to="/noticias" onClick={toggleMenu}>Noticias</Link>
+        <Link to="/actividades" onClick={toggleMenu}>Actividades</Link>
+        <Link to="/contacto" onClick={toggleMenu}>Contacto</Link>
+        <div className="mobile-submenu">
+          <span>Servicios ▾</span>
+          <div className="submenu-links">
+            <Link to="/salud" onClick={toggleMenu}>Salud</Link>
+            <Link to="/educacion" onClick={toggleMenu}>Educación</Link>
+            <Link to="/reclamos" onClick={toggleMenu}>Reclamos</Link>
+          </div>
+        </div>
       </nav>
     </header>
   );

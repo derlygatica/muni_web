@@ -44,18 +44,25 @@
   text-decoration: underline;
 }
 
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 2.2rem;
-  left: 0;
-  background: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  list-style: none;
-  padding: 0.5rem 0;
-  width: 160px;
+..dropdown {
+  position: relative;
 }
+
+.dropdown-menu {
+  top: 100%;
+  left: 0;
+  position: absolute;
+  z-index: 999;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: none;
+  min-width: 160px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 
 .dropdown-menu li {
   padding: 0.3rem 1rem;
