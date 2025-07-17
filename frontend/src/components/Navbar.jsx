@@ -1,56 +1,79 @@
 import React, { useState } from "react";
 
 const Navbar = () => {
-  const [menuAbierto, setMenuAbierto] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuAbierto(!menuAbierto);
-  };
+  const links = [
+    { name: "Inicio", id: "hero" },
+    { name: "Servicios", id: "servicios" },
+    { name: "Proyectos", id: "proyectos" },
+    { name: "Institucional", id: "institucional" },
+    { name: "Noticias", id: "noticias" },
+    { name: "Contacto", id: "contacto" },
+  ];
 
-  const irASeccion = (id) => {
-    const elemento = document.getElementById(id);
-    if (elemento) {
-      elemento.scrollIntoView({ behavior: "smooth" });
-      setMenuAbierto(false); // cerrar menú en móvil
-    }
+  const handleScroll = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setOpen(false);
   };
 
   return (
-    <nav className="bg-white shadow-md fixed top-0 w-full z-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <div className="text-xl font-bold text-blue-800">Muni Sana</div>
-          <div className="md:hidden">
+    <nav className="bg-white px-6 py-4 fixed top-0 w-full shadow-md z-50">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          {/* Reemplaza por tu logo */}
+          <img src="/src/assets/default.png" alt="Logo" className="w-10 h-10" />
+          <span className="text-2xl font-bold text-blue-800">Muni Sana</span>
+        </div>
+
+        {/* Menu desktop */}
+        <ul className="hidden md:flex space-x-8 text-gray-700 font-medium">
+          {links.map((l) => (
+            <li key={l.id}>
+              <button
+                onClick={() => handleScroll(l.id)}
+                className="hover:text-blue-600 transition"
+              >
+                {l.name}
+              </button>
+            </li>
+          ))}
+          <li>
             <button
-              onClick={toggleMenu}
-              className="text-blue-800 focus:outline-none"
+              onClick={() => handleScroll("contacto")}
+              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
             >
-              ☰
+              Contáctanos
             </button>
-          </div>
-          <ul className="hidden md:flex space-x-6 font-semibold text-gray-700">
-            <li><button onClick={() => irASeccion("hero")} className="hover:text-blue-600">Inicio</button></li>
-            <li><button onClick={() => irASeccion("servicios")} className="hover:text-blue-600">Servicios</button></li>
-            <li><button onClick={() => irASeccion("proyectos")} className="hover:text-blue-600">Proyectos</button></li>
-            <li><button onClick={() => irASeccion("institucional")} className="hover:text-blue-600">Institución</button></li>
-            <li><button onClick={() => irASeccion("noticias")} className="hover:text-blue-600">Noticias</button></li>
-            <li><button onClick={() => irASeccion("contacto")} className="hover:text-blue-600">Contacto</button></li>
-          </ul>
+          </li>
+        </ul>
+
+        {/* Hamburguesa móvil */}
+        <div className="md:hidden">
+          <button onClick={() => setOpen(!open)} className="text-gray-700">
+            {open ? "✖" : "☰"}
+          </button>
         </div>
       </div>
 
-      {/* Menú móvil */}
-      {menuAbierto && (
-        <div className="md:hidden bg-white shadow-md px-4 pt-2 pb-4 space-y-2">
-          {["hero", "servicios", "proyectos", "institucional", "noticias", "contacto"].map((id) => (
+      {/* Menu móvil desplegable */}
+      {open && (
+        <div className="md:hidden bg-white shadow-md mt-2 px-6 py-4 space-y-4">
+          {links.map((l) => (
             <button
-              key={id}
-              onClick={() => irASeccion(id)}
-              className="block w-full text-left text-gray-700 font-semibold hover:text-blue-600"
+              key={l.id}
+              onClick={() => handleScroll(l.id)}
+              className="block w-full text-left text-gray-700 font-medium hover:text-blue-600"
             >
-              {id.charAt(0).toUpperCase() + id.slice(1)}
+              {l.name}
             </button>
           ))}
+          <button
+            onClick={() => handleScroll("contacto")}
+            className="block w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition"
+          >
+            Contáctanos
+          </button>
         </div>
       )}
     </nav>
