@@ -1,27 +1,22 @@
-import { useState } from 'react';
+// src/components/Navbar.jsx
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
-    <>
-      {/* Menú superior */}
-      <nav className="bg-white shadow-md fixed top-0 left-0 right-0 z-50 px-4 py-3 md:flex md:justify-between md:items-center">
-        <div className="flex justify-between items-center">
-          <h2 className="text-xl font-bold text-sky-900">Muni Sana</h2>
-          <button className="md:hidden text-xl" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-        </div>
-
-        <ul className={`md:flex md:items-center gap-6 text-sm font-medium ${menuOpen ? 'block mt-4' : 'hidden md:block'}`}>
-          <li><Link to="/" onClick={() => setMenuOpen(false)}>Inicio</Link></li>
-          <li><Link to="/noticias" onClick={() => setMenuOpen(false)}>Noticias</Link></li>
-          <li><Link to="/actividades" onClick={() => setMenuOpen(false)}>Actividades</Link></li>
-          <li><Link to="/contacto" onClick={() => setMenuOpen(false)}>Contacto</Link></li>
-          <li className="relative group">
-            <span className="cursor-pointer">Servicios ▾</span>
-            <ul className="absolute hidden group-hover:block bg-white shadow-md mt-2 rounded p-2 w-40 z-50">
+    <header>
+      <nav className="navbar">
+        <div className="logo">Muni Sana</div>
+        <input type="checkbox" id="menu-toggle" />
+        <label htmlFor="menu-toggle" className="menu-icon">☰</label>
+        <ul className="menu">
+          <li><Link to="/">Inicio</Link></li>
+          <li><Link to="/noticias">Noticias</Link></li>
+          <li><Link to="/actividades">Actividades</Link></li>
+          <li><Link to="/contacto">Contacto</Link></li>
+          <li className="dropdown">
+            <span>Servicios ▾</span>
+            <ul className="dropdown-menu">
               <li><Link to="/salud">Salud</Link></li>
               <li><Link to="/educacion">Educación</Link></li>
               <li><Link to="/reclamos">Reclamos</Link></li>
@@ -31,12 +26,12 @@ export default function Navbar() {
       </nav>
 
       {/* Menú inferior móvil */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-inner flex justify-around py-2 z-40 border-t text-xl">
+      <nav className="mobile-nav">
         <Link to="/">🏠</Link>
         <Link to="/noticias">📰</Link>
         <Link to="/actividades">🎉</Link>
         <Link to="/contacto">📞</Link>
-      </div>
-    </>
+      </nav>
+    </header>
   );
 }
