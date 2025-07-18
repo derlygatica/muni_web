@@ -1,4 +1,5 @@
 // src/routes.jsx
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Noticias from './components/Noticias';
 import Actividades from './components/Actividades';
