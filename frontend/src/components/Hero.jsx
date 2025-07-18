@@ -1,25 +1,15 @@
-import React from "react";
+// src/components/Hero.jsx
+import './Hero.css';
+import { Link } from 'react-router-dom';
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <section className="relative bg-blue-800 text-white pt-28 pb-32 overflow-hidden">
-      <div className="absolute inset-0 opacity-25 bg-[url('/src/assets/default.png')] bg-cover bg-center" />
-      <div className="relative max-w-4xl mx-auto text-center px-6">
-        <h1 className="text-5xl font-bold mb-4 drop-shadow">
-          Bienvenidos a Muni Sana
-        </h1>
-        <p className="text-xl mb-6">
-          Construyendo comunidad con transparencia, fe y acción.
-        </p>
-        <a
-          href="#servicios"
-          className="inline-block bg-green-500 hover:bg-green-600 transition px-8 py-3 rounded-full font-semibold"
-        >
-          Ver servicios
-        </a>
+    <section className="hero">
+      <div className="hero-overlay">
+        <h1>Bienvenidos a Muni Sana</h1>
+        <p>Una municipalidad cercana, transparente y al servicio de su gente.</p>
+        <Link to="/noticias" className="hero-btn">Ver Noticias</Link>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
