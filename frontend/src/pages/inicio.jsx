@@ -2,6 +2,7 @@
 import React from "react";
 import "./Inicio.css"; // si necesitas estilos personalizados
 
+
 export default function Inicio() {
   return (
     <div className="inicio-container">
