@@ -1,12 +1,11 @@
-// src/App.jsx
-import React from 'react';
-import AppRoutes from './routes';
-import Layout from './components/Layout';
-/* App.css - Estilos generales del contenedor App */
+import React from "react";
+import Layout from "./components/Layout";
+import Inicio from "./pages/Inicio";
+
 function App() {
   return (
     <Layout>
-      <AppRoutes />
+      <Inicio />
     </Layout>
   );
 }
