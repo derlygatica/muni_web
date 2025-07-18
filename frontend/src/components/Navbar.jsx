@@ -1,89 +1,52 @@
-import logo from "../assets/default.png"; // Ajusta si estás más profundo
-import React, { useState } from "react";
+// src/components/Navbar.jsx
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  const links = [
-    { name: "Inicio", id: "hero" },
-    { name: "Servicios", id: "servicios" },
-    { name: "Proyectos", id: "proyectos" },
-    { name: "Institucional", id: "institucional" },
-    { name: "Noticias", id: "noticias" },
-    { name: "Contacto", id: "contacto" },
-  ];
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setOpen(false);
-    }
-  };
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <nav className="bg-white fixed top-0 w-full shadow-sm z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo + Título */}
-        <div className="flex items-center space-x-4">
-          <img
-            src={logo}
-            alt="Logo Municipalidad"
-            className="object-contain"
-            style={{ width: "48px", height: "48px" }}
-          />
-          <span className="text-2xl font-bold text-blue-800">Muni Sana</span>
-        </div>
+    <header className="navbar-container">
+      <div className="navbar-content">
+        <h1 className="logo"><Link to="/">Muni Sana</Link></h1>
 
-        {/* Menú Escritorio */}
-        <div className="hidden md:flex items-center space-x-10">
-          {links.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => scrollTo(link.id)}
-              className="text-gray-700 hover:text-blue-600 transition"
-            >
-              {link.name}
-            </button>
-          ))}
-          <button
-            onClick={() => scrollTo("contacto")}
-            className="ml-6 bg-green-500 text-white px-5 py-2 rounded-md font-medium hover:bg-green-600 transition"
-          >
-            Contáctanos
-          </button>
-        </div>
+        {/* Desktop menu */}
+        {!isMobile && (
+          <nav className="menu-desktop">
+            <Link to="/">Inicio</Link>
+            <Link to="/noticias">Noticias</Link>
+            <Link to="/actividades">Actividades</Link>
+            <Link to="/contacto">Contacto</Link>
+          </nav>
+        )}
 
-        {/* Botón Móvil */}
-        <div className="md:hidden">
-          <button onClick={() => setOpen(!open)} className="text-2xl text-gray-700">
-            {open ? "✖" : "☰"}
+        {/* Mobile toggle button */}
+        {isMobile && (
+          <button className="mobile-toggle" onClick={toggleMenu}>
+            ☰
           </button>
-        </div>
+        )}
       </div>
 
-      {/* Menú Móvil */}
-      {open && (
-        <div className="md:hidden bg-white shadow-md px-6 py-4 space-y-4">
-          {links.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => scrollTo(link.id)}
-              className="block w-full text-left text-gray-700 font-medium hover:text-blue-600"
-            >
-              {link.name}
-            </button>
-          ))}
-          <button
-            onClick={() => scrollTo("contacto")}
-            className="block w-full bg-green-500 text-white py-2 rounded-md font-medium hover:bg-green-600 transition"
-          >
-            Contáctanos
-          </button>
-        </div>
+      {/* Mobile menu */}
+      {isMobile && menuOpen && (
+        <nav className="menu-mobile">
+          <Link to="/" onClick={toggleMenu}>Inicio</Link>
+          <Link to="/noticias" onClick={toggleMenu}>Noticias</Link>
+          <Link to="/actividades" onClick={toggleMenu}>Actividades</Link>
+          <Link to="/contacto" onClick={toggleMenu}>Contacto</Link>
+        </nav>
       )}
-    </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}
