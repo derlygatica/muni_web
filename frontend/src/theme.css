@@ -1,105 +1,57 @@
-/* ============================
-   MUNI SANA - THEME.CSS BASE
-   ============================
-   Paleta de colores institucional armónica y accesible
-   Tipografía moderna y jerarquía clara
-*/
+/* src/theme.css */
 
 :root {
-  /* Colores institucionales */
-  --color-primary: #2D6A4F;
-  --color-secondary: #95D5B2;
-  --color-accent: #FFDE59;
-  --color-background: #FFFFFF;
-  --color-text: #333333;
-  --color-muted: #6C757D;
+  --color-primario: #27566b;
+  --color-secundario: #e5f3f9;
+  --color-acento: #f9b233;
+  --color-texto: #1f1f1f;
+  --color-fondo: #f7f9fb;
 
-  /* Tipografía */
-  --font-main: 'Inter', sans-serif;
+  --fuente-base: 'Inter', sans-serif;
 
-  /* Espaciados base */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 32px;
-
-  /* Bordes */
-  --border-radius: 12px;
-  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --borde-redondo: 12px;
 }
 
-/* Tipografía base */
 body {
-  font-family: var(--font-main);
-  background-color: var(--color-background);
-  color: var(--color-text);
-  line-height: 1.6;
+  font-family: var(--fuente-base);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  margin: 0;
+  padding: 0;
 }
 
-/* Títulos */
-h1, h2, h3, h4 {
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-sm);
+a {
+  color: var(--color-primario);
+  text-decoration: none;
 }
 
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.2rem; }
+h1, h2, h3 {
+  color: var(--color-primario);
+}
 
-/* Botones */
+.card {
+  background-color: white;
+  border-radius: var(--borde-redondo);
+  box-shadow: var(--sombra-suave);
+  padding: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
 .button {
-  background-color: var(--color-primary);
+  background-color: var(--color-primario);
   color: white;
+  padding: 0.5rem 1.2rem;
   border: none;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--border-radius);
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: var(--color-secondary);
-}
-
-/* Cards */
-.card {
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
-}
-
-.card h3 {
-  margin-top: 0;
-}
-
-/* Enlaces */
-a {
-  text-decoration: none;
-  color: var(--color-primary);
-}
-
-a:hover {
-  color: var(--color-accent);
-}
-
-/* Footer */
-footer {
-  background-color: var(--color-primary);
-  color: white;
-  text-align: center;
-  padding: var(--spacing-md);
-  font-size: 0.9rem;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  h1 { font-size: 1.5rem; }
-  h2 { font-size: 1.2rem; }
-
-  .card {
-    padding: var(--spacing-sm);
-  }
+  background-color: #1f4455;
 }

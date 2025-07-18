@@ -1,12 +1,68 @@
-# React + Vite
+# 🌐 Muni Sana – Plataforma digital municipal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio institucional moderno y accesible para compartir noticias, actividades, servicios y recursos comunitarios. Inspirado en el portal de Santa Juana, con una identidad propia profesional y adaptable.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧩 Características principales
 
-## Expanding the ESLint configuration
+- ✅ Menú profesional responsivo (versión escritorio + versión móvil en parte inferior)
+- ✅ Estilo visual institucional moderno (colores armónicos, tipografía clara y elegante)
+- ✅ Sistema de noticias y actividades conectadas a backend vía API
+- ✅ Secciones institucionales: Contacto, Servicios (Salud, Educación, Reclamos)
+- ✅ Layout adaptable y accesible (diseño UX/UI optimizado)
+- ✅ Imagen por defecto profesional para publicaciones (`components/default.png`)
+- ✅ Estructura en React + Vite + React Router
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🖥️ Estructura del proyecto
+
+frontend/
+├── src/
+│ ├── assets/
+│ │ └── logo.svg
+│ ├── components/
+│ │ ├── Navbar.jsx
+│ │ ├── Footer.jsx
+│ │ ├── Noticias.jsx
+│ │ ├── Actividades.jsx
+│ │ └── default.png
+│ ├── layout/
+│ │ └── Layout.jsx
+│ ├── App.jsx
+│ ├── main.jsx
+│ ├── theme.css
+│ └── index.css
+├── public/
+│ └── favicon.ico
+└── vite.config.js
+
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- React + Vite
+- CSS personalizado (`index.css`, `theme.css`)
+- React Router DOM
+- Diseño responsive con media queries
+
+---
+
+## 🚀 Comandos útiles
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor local
+npm run dev
+
+# Compilar para producción
+npm run build
+
+💬 Contribuciones
+Este proyecto está en desarrollo. ¡Si deseas aportar mejoras, nuevos módulos o sugerencias de diseño, eres bienvenido/a!
+
+© 2025 - Muni Sana. Todos los derechos reservados.
